@@ -1,19 +1,7 @@
-version: '3'
-
-services:
-  paginadeds:
-    build: .
-    mem_limit: 512m
-    ports:
-      - "8080:8080"
-    environment:
-      DB_URL: jdbc:mysql://contenedor_db2:3306/paginads?createDatabaseIfNotExist=true&serverTimezone=UTC
-      DB_USER: root
-      DB_PASS: root
-    restart: always
-    depends_on:
-      contenedor_db2:
-        condition: service_healthy
+  restart: always
+  depends_on:
+    contenedor_db2:
+      condition: service_healthy
 
 
   contenedor_db2:
@@ -29,3 +17,15 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 10s
       retries: 10
+
+version: '3'
+services:
+  paginadeds:
+    build: .
+    mem_limit: 512m
+    ports:
+        - "8080:8080"
+    environment:
+      DB_URL: jdbc:mysql://contenedor_db2:3306/paginads?createDatabaseIfNotExist=true&serverTimezone=UTC
+      DB_USER: root
+      DB_PASS: root

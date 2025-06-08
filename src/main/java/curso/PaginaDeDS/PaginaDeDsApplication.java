@@ -13,6 +13,7 @@ public class PaginaDeDsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PaginaDeDsApplication.class, args);
 	}
+
 	@Configuration
 	public static class Myconfiguration{
 		@Bean
@@ -21,7 +22,9 @@ public class PaginaDeDsApplication {
 				@Override
 				public void addCorsMappings(CorsRegistry registry) {
 					registry.addMapping("/**")
-							.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");
+							.allowedOrigins("https://alamblanco.github.io/pagina_ds_front/") //origen desde donde va a recibir solicitudes HTTP
+							.allowedMethods("HEAD", "GET", "PUT", "POST", "DELETE", "PATCH");  //Metodos HTTP permitidos
+					        //.allowedHeaders("*"); cabeceras especiales, aun no las veo pero es para loggins y otras cosas
 				}
 			};
 		}
