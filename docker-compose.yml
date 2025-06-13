@@ -15,7 +15,7 @@ services:
       contenedor_db2:
         condition: service_healthy
 
-        
+
   contenedor_db2:
     image: mysql:8.0
     ports:
